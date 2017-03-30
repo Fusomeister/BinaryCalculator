@@ -1,0 +1,41 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.6</VERSION>
+ <DEVICE>"ATmega2560"</DEVICE>
+ <WORKING_DIR>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\avrasm\inc\m2560def.inc</FILE>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.1.130\avrasm\inc\M2560DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\Debug\TestingINPUT.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>TestingINPUT.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>TestingINPUT.map</FILE>
+  <FILE>TestingINPUT.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <main><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>95</LINE></main>
+  <delay><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>80</LINE></delay>
+  <delay_loop><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>85</LINE></delay_loop>
+  <read1><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>111</LINE></read1>
+  <SAVE1><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>105</LINE></SAVE1>
+  <read2><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>130</LINE></read2>
+  <SAVE2><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>124</LINE></SAVE2>
+  <saveoperation><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>143</LINE></saveoperation>
+  <addition><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>162</LINE></addition>
+  <subtraction><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>169</LINE></subtraction>
+  <multiplication><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>184</LINE></multiplication>
+  <division><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>194</LINE></division>
+  <end><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>200</LINE></end>
+  <divisionbody><FILE>E:\OneDrive - ViaUC\CAL\Assembler Projects\TestingINPUT\TestingINPUT\main.asm</FILE><LINE>190</LINE></divisionbody>
+ </LABELS>
+</ASSEMBLER_INFO>
