@@ -77,22 +77,20 @@
 
 	rjmp main
 
-delay:
-
-	LDI delay1, 13
-	LDI delay2, 175
-	LDI delayv, 183
-	;3 cycles
+delay:							;starts the delay
+	clr	delay1
+	clr	delay2
+	ldi	delayv, 10
       
 delay_loop: 
-	DEC delayv
-	BRNE delay_loop
-	DEC delay2
-	BRNE delay_loop
-	DEC delay1
-	BRNE delay_loop
-	RET
-	;2.500.000 cycles
+	dec	delay2		
+	brne	delay_loop 	
+	dec	delay1		
+	brne	delay_loop 	
+	dec	delayv		
+	brne	delay_loop 	
+	ret     					;returns from where it was called from
+
 
 main:
 	CLR value1
@@ -103,14 +101,12 @@ main:
 	LDI R20, 0x00				;Initialize PORTB as input
 	OUT DDRB, R20				;Make PORTB to input, switches
 	rjmp read1					;Start the actual program
-	;9 cycles
 
 SAVE1:
 	MOV value1, R20				;Copy value in R20 to value1 (our first value for our calculator)
 	LDI R20, 0x00				;"reset" R20 by making it 0x00
 	LDI R29, 0xFF				;R29 is used to display on LEDs, so they are turned off when R29 is 0xFF
 	rjmp read2					;let's start collecting the second number
-	;5 cycles
 
 read1:
 	IN R25, PINB				;Read switches
@@ -124,14 +120,12 @@ read1:
 	MOV R29, R20				;Copies value of R20 into R29
 	COM R20						;1's compliment on R20
 	rjmp read1					;Jump back up to read1
-	;14 cycles if BRSH is false, 9 if true
 
 SAVE2:
 	MOV value2, R20				;copy value from R20 to value2
 	LDI R20, 0x00				;Reset R20
 	LDI R29, 0xFF				;Reset R29
 	rjmp saveoperation			;jump to saveoperation, to select how these two numbers should add together
-	;5 cycles
 
 read2:
 	IN R25, PINB				;read switches
@@ -145,7 +139,6 @@ read2:
 	MOV R29, R20				;copy value from R20 to R29
 	COM R20						;1's compliment on R20
 	rjmp read2					;start over the read2
-	;14 cycles if BRSH is false, 9 if true
 
 saveoperation:
 	IN R25, PINB				;read switches
@@ -163,8 +156,8 @@ saveoperation:
 	CPI R25, 0b11110111			;compare R25 with the binary number
 	BREQ division				;jump to division
 	LDI R25, 0x00				;if user pressed either of the 4 other switches not in use, set the register to 0x00 and next operation restarts the routine
+
 	rjmp saveoperation			;restart routine from the top
-	;17 cycles if it goes the whole way down or 9, 11, 13 or 15 depending what is pressed
 
 addition:
 	MOV SUM, value1				;copy value1 into SUM
@@ -172,7 +165,6 @@ addition:
 	COM SUM						;1's compliment SUM
 	out PORTD, SUM				;take SUM out to the LEDs
 	rjmp end					;go to end (finish)
-	;6 cycles
 
 subtraction:	
 	MOV SUM, value1				;I changed the code from using SUB
@@ -182,21 +174,18 @@ subtraction:
 	COM SUM
 	OUT PORTD, SUM
 	rjmp end
-	;8 cycles
 
 /*	MOV SUM, value1				;copy value1 into SUM
 	SUB SUM, value2				;subtract value2 from SUM
 	COM SUM						;1's compliment SUM
 	out PORTD, SUM				;take SUM out to the LEDs
 	rjmp end					;go to end (finish)*/
-	;6 cycles (so this one is faster)
 
 multiplication:
 	MUL value1, value2			;multiply value1 and value2
 	COM R0						;1's compliment R0
 	OUT PORTD, R0				;take R0 out to the LEDs
 	rjmp end					;go to end (finish)
-	;6 cycles
 
 divisionbody:
 	INC SUM						;increment count
@@ -207,20 +196,6 @@ division:
 	BRGE divisionbody			;branch to divisionbody if greater or equel
 	COM SUM						;1's compliment count
 	OUT PORTD, SUM				;take count out to the LEDs
-	;if BRGE = false it's 4 cycles, else it's gonna run it x times before it is, each run is 5 cycles. So 5 * x + 4 where x is where BRGE = true
 
 end:
-	LDI delay1, 102
-	LDI delay2, 118
-	LDI delayv, 194
-	CALL delay_loop
-	LDI R25, 0xFF
-	OUT PORTD, R25
-
-	LDI delay1, 102
-	LDI delay2, 118
-	LDI delayv, 194
-	CALL delay_loop
-	OUT PORTD, SUM
-	rjmp end					;end of program and you get a blinking result
-	;14 cycles
+	rjmp end					;end of program
